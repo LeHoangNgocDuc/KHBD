@@ -15,6 +15,12 @@ uvicorn backend.main:app --reload
 
 Mở `http://127.0.0.1:8000`. Dữ liệu tải lên được lưu trong thư mục tạm `backend/data` của máy chạy app. Đây là bản local, chưa có đăng nhập, phân quyền hay lưu trữ nhiều người dùng.
 
+## Cấu hình nhận diện FastAPI trên Vercel
+
+Tệp `pyproject.toml` đã khai báo `backend.main:app` làm FastAPI entrypoint. Khi import repository lên Vercel, đặt **Root Directory** tại thư mục có `pyproject.toml`, `requirements.txt` và thư mục `backend/`.
+
+Lưu ý: khai báo entrypoint chỉ xử lý lỗi build `FASTAPI_ENTRYPOINT_NOT_FOUND`. Bản này vẫn cần thay đổi cách lưu tệp/phiên và cách nhận PDF lớn trước khi dùng đủ tính năng trên Vercel Functions.
+
 ## Chức năng hiện có
 
 - Nạp PDF/DOCX/XLSX PPCT; parser lấy tuần, khoảng ngày, tiết PPCT, tên bài và phân môn theo nội dung văn bản. Có thể sửa trường hợp bảng PDF bị tách dòng sai.
